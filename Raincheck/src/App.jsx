@@ -1,35 +1,50 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from "react";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [data, setData] = useState(null);
+  const apiKey = process.env.REACT_APP_API_KEY;
+  const baseUrl = process.env.REACT_APP_API_URL;
+  const location = "Göteborg"; // TODO: Should be dynamic and based on input from user
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          `${baseUrl}/forecast.json?key=${apiKey}&q=${location}&days=10&aqi=no&alerts=no`
+        );
+        const jsonData = await response.json();
+        setData(jsonData);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, [apiKey]);
+
+  // Temporary test-----------
+
+  let currentTemperature = null;
+  let currentCondition = null;
+
+  if (data && data.current) {
+    currentTemperature = data.current.temp_c;
+    currentCondition = data.current.condition.text;
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div>
+      {data ? (
+        <div>
+          <h2>Current Weather</h2>
+          <p>Temperature: {currentTemperature} °C</p>
+          <p>Condition: {currentCondition}</p>
+        </div>
+      ) : (
+        <p>Loading..</p>
+      )}
+    </div>
+  );
 }
 
-export default App
+export default App;
