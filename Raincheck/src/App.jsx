@@ -1,26 +1,32 @@
 import { useState, useEffect } from "react";
+import SearchBar from "./components/SearchBar";
 
 function App() {
   const [data, setData] = useState(null);
   const apiKey = process.env.REACT_APP_API_KEY;
   const baseUrl = process.env.REACT_APP_API_URL;
-  const location = "Göteborg"; // TODO: Should be dynamic and based on input from user
+  const [location, setLocation] = useState(""); // fixed: Should be dynamic and based on input from user
 
+  const handleSearch = (query) => {
+    setLocation(query);
+  };
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(
-          `${baseUrl}/forecast.json?key=${apiKey}&q=${location}&days=10&aqi=no&alerts=no`
-        );
-        const jsonData = await response.json();
-        setData(jsonData);
+        if (location !== "") {
+          const response = await fetch(
+            `${baseUrl}/forecast.json?key=${apiKey}&q=${location}&days=10&aqi=no&alerts=no`
+          );
+          const jsonData = await response.json();
+          setData(jsonData);
+        }
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
 
     fetchData();
-  }, [apiKey]);
+  }, [apiKey, baseUrl, location]);
 
   // Temporary test-----------
 
@@ -33,15 +39,17 @@ function App() {
   }
 
   return (
-    <div>
-      {data ? (
+    <div className="App">
+      <h1>Search for Weather</h1>
+      <SearchBar onSearch={handleSearch} />
+      {data && data.current ? (
         <div>
-          <h2>Current Weather</h2>
-          <p>Temperature: {currentTemperature} °C</p>
-          <p>Condition: {currentCondition}</p>
+          <h2>Current Weather in {location}</h2>
+          <p>Temperature: {data.current.temp_c} °C</p>
+          <p>Condition: {data.current.condition.text}</p>
         </div>
       ) : (
-        <p>Loading..</p>
+        <p>Search for a location to find the weather.</p>
       )}
     </div>
   );
