@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { css } from "@emotion/react";
+import { StyledInput, StyledButton } from "./FormComponents";
+import styled from "styled-components";
 
 const SearchBar = ({ onSearch }) => {
   const [query, setQuery] = useState("");
@@ -15,15 +16,13 @@ const SearchBar = ({ onSearch }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div>
-        <input
-          type="text"
-          value={query}
-          onChange={handleChange}
-          placeholder="planet"
-        />
-        <button type="submit">Search</button>
-      </div>
+      <StyledInput
+        type="text"
+        value={query}
+        onChange={handleChange}
+        placeholder="Location"
+      />
+      <StyledButton type="submit">Search</StyledButton>
     </form>
   );
 };
