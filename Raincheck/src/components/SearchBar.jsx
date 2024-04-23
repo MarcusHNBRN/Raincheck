@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { StyledInput, StyledButton } from "./FormComponents";
-import styled from "styled-components";
 
 const SearchBar = ({ onSearch }) => {
   const [query, setQuery] = useState("");
