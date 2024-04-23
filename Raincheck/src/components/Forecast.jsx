@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { StyledButton } from "./FormComponents";
 
 function Forecast({ location, data }) {
   const [showForecast, setShowForecast] = useState(false);
@@ -39,9 +40,9 @@ function Forecast({ location, data }) {
       <img src={data.current.condition.icon} alt="Weather Icon" />
       <p>Temperature: {currentTemperature} °C</p>
       <p>Condition: {currentCondition}</p>
-      <button onClick={toggleForecast}>
+      <StyledButton onClick={toggleForecast}>
         {showForecast ? "Hide 8-Day forecast" : "Show 8-Day forecast"}
-      </button>
+      </StyledButton>
       {showForecast && data && data.forecast && (
         <div>
           <hr />

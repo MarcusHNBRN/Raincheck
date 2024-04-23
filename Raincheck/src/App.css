@@ -21,12 +21,19 @@
   }
 }
 
-.info-container {
-  background-color: white;
-  border: black 1px solid;
-  color: black;
-  width: auto;
-  height: auto;
-  overflow: hidden;
-  animation: slideDown 0.5s ease-in-out forwards;
+.card {
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(0, 0, 255),
+    rgb(0, 166, 255)
+  );
+  color: white;
+  padding: 32px;
+  border-radius: 8px;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: white;
 }

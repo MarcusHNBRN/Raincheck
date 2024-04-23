@@ -12,6 +12,15 @@ export const StyledInput = styled.input`
 export const StyledButton = styled.button`
   text-align: center;
   font-size: 16px;
-  background-color: white;
+  padding: 8px 16px;
   color: black;
+  border: none;
+  cursor: pointer;
+  background-color: white;
+  transition: background-image 0.3s ease-out;
+
+  &:hover {
+    background-color: #006aff;
+    color: white;
+  }
 `;

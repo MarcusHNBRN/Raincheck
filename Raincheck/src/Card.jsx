@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import SearchBar from './components/SearchBar';
-import fetchWeatherData from './WeatherApi';
-import Forecast from './components/Forecast';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import SearchBar from "./components/SearchBar";
+import fetchWeatherData from "./WeatherApi";
+import Forecast from "./components/Forecast";
+import "./App.css";
 
 function Card() {
   const [data, setData] = useState(null);
   const apiKey = process.env.REACT_APP_API_KEY;
   const baseUrl = process.env.REACT_APP_API_URL;
-  const [location, setLocation] = useState('');
+  const [location, setLocation] = useState("");
   const [showForecast, setShowForecast] = useState(false);
 
   const handleSearch = (query) => {
@@ -17,7 +17,7 @@ function Card() {
 
   useEffect(() => {
     const fetchData = async () => {
-      if (location !== '') {
+      if (location !== "") {
         const jsonData = await fetchWeatherData(apiKey, baseUrl, location);
         setData(jsonData);
       }
@@ -34,10 +34,15 @@ function Card() {
     <div className="card">
       <SearchBar onSearch={handleSearch} />
       <div
-        className={`info-container ${data && data.current ? 'slide-down' : ''}`}
+        className={`card-container ${data && data.current ? "slide-down" : ""}`}
       >
         {data && data.current ? (
-          <Forecast location={location} data={data} toggleForecast={toggleForecast} showForecast={showForecast} />
+          <Forecast
+            location={location}
+            data={data}
+            toggleForecast={toggleForecast}
+            showForecast={showForecast}
+          />
         ) : (
           <p>Search for a location to find the weather.</p>
         )}
