@@ -1,2 +1,3 @@
 # Raincheck
-a  weather app (for now)
+
+a weather app

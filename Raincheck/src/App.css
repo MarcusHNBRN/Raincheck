@@ -1,8 +1,8 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  display: flex;
+  justify-content: center;
   text-align: center;
+  width: 100%;
 }
 
 .logo {
@@ -11,32 +11,29 @@
   will-change: filter;
   transition: filter 300ms;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
 
-@keyframes logo-spin {
+@keyframes slideDown {
   from {
-    transform: rotate(0deg);
+    height: 0;
   }
   to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+    height: auto;
   }
 }
 
 .card {
-  padding: 2em;
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(0, 0, 255),
+    rgb(0, 166, 255)
+  );
+  color: white;
+  padding: 32px;
+  border-radius: 8px;
 }
 
-.read-the-docs {
-  color: #888;
+hr {
+  border: 0;
+  height: 1px;
+  background: white;
 }
