@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import SearchBar from "./components/SearchBar";
-import fetchWeatherData from "./WeatherApi";
+import fetchWeatherData from "./api/WeatherApi";
 import Forecast from "./components/Forecast";
 import "./App.css";
 
