@@ -44,7 +44,7 @@ function Card() {
             showForecast={showForecast}
           />
         ) : (
-          <p>Search for a location to find the weather.</p>
+          <p className="search-text">Search for a location</p>
         )}
       </div>
     </div>
