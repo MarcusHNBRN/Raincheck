@@ -22,18 +22,128 @@
 }
 
 .card {
-  background-image: linear-gradient(
-    to bottom right,
-    rgb(0, 0, 255),
-    rgb(0, 166, 255)
-  );
-  color: white;
-  padding: 32px;
+  color: rgb(0, 0, 0);
+}
+
+.forecast-card {
   border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 15px;
 }
 
 hr {
   border: 0;
   height: 1px;
   background: white;
+}
+
+h2 {
+  margin-bottom: unset;
+}
+
+h3 {
+  color: white;
+}
+
+.day {
+  font-weight: 700;
+  font-size: large;
+}
+
+form {
+  margin-bottom: 15px;
+}
+
+.search-text {
+  color: white;
+  font-weight: 600;
+}
+
+/* Weather backgrounds */
+
+.sunny-weather {
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(255, 238, 0),
+    rgb(83, 195, 255)
+  );
+}
+
+.cloudy-weather {
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(199, 199, 199),
+    rgb(222, 222, 222),
+    rgb(125, 209, 255)
+  );
+}
+
+.rainy-weather {
+  background-color: #a4b0be;
+}
+
+.patchty-rainy-weather {
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(119, 119, 119),
+    rgb(82, 146, 248)
+  );
+}
+
+.overcast-weather {
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(68, 68, 68),
+    rgb(155, 155, 155)
+  );
+}
+
+.moderate-rain-weather {
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(129, 129, 129),
+    rgb(134, 152, 179)
+  );
+}
+
+.snow-weather {
+  background-image: linear-gradient(
+    to bottom,
+    rgb(129, 129, 129),
+    rgb(255, 255, 255)
+  );
+}
+
+.snow-heavy-weather {
+  background-image: linear-gradient(
+    to bottom,
+    rgb(129, 129, 129),
+    rgb(133, 133, 133)
+  );
+}
+
+.patchy-snow {
+  background-image: linear-gradient(
+    to bottom,
+    rgb(129, 129, 129),
+    rgb(167, 167, 167),
+    rgb(82, 146, 248)
+  );
+}
+
+.fog-weather {
+  background: radial-gradient(circle, rgb(107, 107, 107), rgb(211, 211, 211));
+}
+
+.sleet-weather {
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(129, 129, 129),
+    rgb(134, 152, 179),
+    rgb(126, 162, 215)
+  );
+}
+
+.default-weather {
+  background-color: #a4b0be;
 }
