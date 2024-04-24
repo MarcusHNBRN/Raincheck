@@ -1,11 +1,19 @@
 import React, { useState } from "react";
 import { StyledButton } from "./FormComponents";
+import AddDetails from "./AddDetails";
 
 function Forecast({ location, data }) {
   const [showForecast, setShowForecast] = useState(false);
+  const [expandDetails, setExpandDetails] = useState([]);
 
   const toggleForecast = () => {
     setShowForecast(!showForecast);
+  };
+
+  const toggleAddDetails = (index) => {
+    const newExpandDetails = [...expandDetails];
+    newExpandDetails[index] = !newExpandDetails[index];
+    setExpandDetails(newExpandDetails);
   };
 
   let currentTemperature = null;
@@ -55,7 +63,7 @@ function Forecast({ location, data }) {
         <div>
           <hr />
           <h3>8-Day Forecast</h3>
-          {data.forecast.forecastday.map((day) => (
+          {data.forecast.forecastday.map((day, index) => (
             <div
               key={day.date}
               className={
@@ -68,6 +76,12 @@ function Forecast({ location, data }) {
               <p>Min: {day.day.mintemp_c} °C</p>
               <p>Max: {day.day.maxtemp_c} °C</p>
               <p>{day.day.condition.text}</p>
+              <a onClick={() => toggleAddDetails(index)}>
+                {expandDetails[index] ? "Show less" : "Show more"}
+              </a>
+              {expandDetails[index] && (
+                <AddDetails day={day} />
+              )}
             </div>
           ))}
         </div>
